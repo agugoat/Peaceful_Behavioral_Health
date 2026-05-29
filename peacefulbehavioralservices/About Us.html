@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — Peaceful Behavioral Services</title>
+  <meta name="description"
+    content="About Peaceful Behavioral Services — a Maryland behavioral health provider supporting individuals and families with compassionate, whole-person care." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ---- About page styles ---- */
+
+
+    .ab-hero {
+      background:
+        radial-gradient(110% 90% at 90% -10%, var(--sky) 0%, rgba(233, 241, 251, 0) 58%),
+        linear-gradient(180deg, #fbfdff 0%, var(--gray) 100%);
+      padding: 48px 0 40px;
+    }
+
+    @media (min-width: 760px) {
+      .ab-hero {
+        padding: 70px 0 52px;
+      }
+    }
+
+    .ab-hero .crumb {
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+    }
+
+    .ab-hero .crumb a {
+      color: var(--blue-deep);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .ab-hero .crumb a:hover {
+      text-decoration: underline;
+    }
+
+    .ab-hero h1 {
+      margin-top: 14px;
+      max-width: 17ch;
+    }
+
+    .ab-hero p.lede {
+      margin-top: 18px;
+      font-size: clamp(18px, 2vw, 21px);
+      color: var(--ink-soft);
+      max-width: 60ch;
+      text-wrap: pretty;
+    }
+
+    /* Story */
+    .story {
+      padding: 64px 0 72px;
+    }
+
+    @media (min-width: 760px) {
+      .story {
+        padding: 88px 0;
+      }
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 920px) {
+      .story-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+      }
+    }
+
+    .story-grid.flip .story-art {
+      order: -1;
+    }
+
+    @media (min-width: 920px) {
+      .story-grid.flip .story-art {
+        order: 1;
+      }
+    }
+
+    .story-art image-slot {
+      width: 100%;
+      height: 400px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .story p {
+      font-size: 18px;
+      color: var(--ink-soft);
+      margin: 16px 0 0;
+      text-wrap: pretty;
+    }
+
+    /* Values */
+    .values-sec {
+      background: var(--sky-2);
+      padding: 64px 0 72px;
+      border-top: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    @media (min-width: 760px) {
+      .values-sec {
+        padding: 88px 0 96px;
+      }
+    }
+
+    .val-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .val-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .val-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+    }
+
+    .val {
+      background: #fff;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--r-card);
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .val-ic {
+      width: 50px;
+      height: 50px;
+      border-radius: 13px;
+      background: var(--sky);
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .val:nth-child(3n+2) .val-ic {
+      background: #e6f5f3;
+      color: var(--teal-deep);
+    }
+
+    .val:nth-child(3n) .val-ic {
+      background: #e7eefb;
+      color: var(--blue-deep);
+    }
+
+    .val h3 {
+      font-size: 20px;
+    }
+
+    .val p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 16px;
+    }
+
+    /* Team */
+    .team {
+      padding: 64px 0 76px;
+    }
+
+    @media (min-width: 760px) {
+      .team {
+        padding: 90px 0;
+      }
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+
+    @media (min-width: 560px) {
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 920px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+    }
+
+    .member {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .member image-slot {
+      width: 100%;
+      height: 280px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .member h3 {
+      font-size: 20px;
+      margin-bottom: 2px;
+    }
+
+    .member .role {
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .member p {
+      margin: 8px 0 0;
+      color: var(--ink-soft);
+      font-size: 15.5px;
+    }
+
+    /* CTA band */
+    .cta-band {
+      background: var(--navy);
+      color: #e7f0f9;
+      padding: 64px 0 70px;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      color: #fff;
+    }
+
+    .cta-band p {
+      color: #aecce6;
+      font-size: 18px;
+      max-width: 52ch;
+      margin: 16px auto 30px;
+    }
+
+    .cta-band .hero-ctas {
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <!-- Crisis bar -->
+  <div class="crisis" role="region" aria-label="Crisis support">
+    <div class="crisis-inner">
+      <span class="crisis-dot" aria-hidden="true"></span>
+      <span>In crisis? Call or text <a href="tel:988">988</a> for the Suicide &amp; Crisis Lifeline — 24/7</span>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="index.html" aria-label="Peaceful Behavioral Services — home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <circle cx="20" cy="20" r="20" fill="#2b6cb0" />
+            <path d="M20 30c-5.5-3.6-9-6.8-9-11.4A4.6 4.6 0 0 1 20 16a4.6 4.6 0 0 1 9 2.6C29 23.2 25.5 26.4 20 30Z"
+              fill="#fff" />
+            <path d="M11.5 20.5h4l1.6-3.2 2.2 5 1.5-2.6h7.2" stroke="#2f9d92" stroke-width="1.7" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="logo-text">
+          <span class="logo-name">Peaceful Behavioral Services</span>
+          <span class="logo-tag">Maryland · Medicaid Accepted</span>
+        </span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="Refer a Client.html">Refer a Client</a></li>
+          <li><a href="index.html#insurance">Insurance</a></li>
+          <li><a href="About Us.html" class="active">About Us</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right">
+        <a class="btn btn-primary btn-sm" href="tel:+14437910678" aria-label="Call now at 443-791-0678">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72A2 2 0 0 1 22 16.92z" />
+          </svg>
+          Call Now
+        </a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-panel">
+      <div class="mm-head">
+        <span class="logo-name" style="color:var(--navy)">Menu</span>
+        <button class="close-btn" id="closeBtn" aria-label="Close menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="Refer a Client.html">Refer a Client</a>
+      <a href="index.html#insurance">Insurance</a>
+      <a href="About Us.html">About Us</a>
+      <a href="index.html#contact">Contact</a>
+      <a class="btn btn-primary mm-cta" href="tel:+14437910678">Call 443-791-0678</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="ab-hero">
+      <div class="wrap">
+        <div class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; About Us</div>
+        <span class="loc-badge"><span class="dot" aria-hidden="true"></span>Maryland • Medicaid Accepted</span>
+        <h1>Compassionate care, <span class="accent">close to home.</span></h1>
+        <p class="lede">Peaceful Behavioral Services provides compassionate, accessible, and person-centered behavioral
+          health care. We are dedicated to supporting individuals and families across Maryland with the services and
+          guidance they need to achieve stability and wellbeing.</p>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="story">
+      <div class="wrap story-grid">
+        <div>
+          <h2>Our story</h2>
+          <p>Peaceful Behavioral Services was founded with a simple mission: helping individuals and families access
+            compassionate, reliable behavioral health support when they need it most. We understand that navigating
+            mental health challenges and life transitions can feel overwhelming, which is why we focus on making care
+            approachable, respectful, and centered around each person’s unique needs.</p>
+          <p>From medication management and behavioral health support to life skills training, transportation
+            assistance, and community resources, we are committed to helping clients build healthier, more stable lives.
+            Our goal is simple — to provide support that empowers people to heal, grow, and thrive.</p>
+        </div>
+        <div class="story-art">
+          <image-slot id="about-story" src="images/office_front.webp" shape="rounded" radius="20"
+            placeholder="Drop a photo — your office, team, or a welcoming moment"></image-slot>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="values-sec">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">What we stand for</span>
+          <h2>Our mission &amp; <span class="accent">values.</span></h2>
+          <p>At Peaceful Behavioral Services, our mission is to provide compassionate, accessible, and person-centered
+            behavioral health support that empowers individuals and families to achieve stability, wellness, and
+            long-term success. We are committed to meeting people where they are by providing care, resources, and
+            support services that promote healing, independence, and hope.</p>
+        </div>
+        <div class="val-grid">
+          <article class="val">
+            <span class="val-ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 22l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" />
+              </svg></span>
+            <h3>Compassion First</h3>
+            <p>We treat every individual with dignity, empathy, and respect, creating a welcoming environment where
+              clients feel heard, supported, and valued throughout their journey.</p>
+          </article>
+          <article class="val">
+            <span class="val-ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72A2 2 0 0 1 22 16.92z" />
+              </svg></span>
+            <h3>Accessible &amp; Responsive Care</h3>
+            <p>We believe behavioral health support should be easy to access. From medication management to community
+              resources, we strive to provide timely, responsive care when it is needed most.</p>
+          </article>
+          <article class="val">
+            <span class="val-ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="8" r="3.2" />
+                <circle cx="17" cy="9" r="2.6" />
+                <path d="M3.5 19c0-3.2 2.6-5.5 5.5-5.5s5.5 2.3 5.5 5.5" />
+                <path d="M15.2 13.6c2.5.2 4.3 2 4.3 4.6" />
+              </svg></span>
+            <h3>Whole-Person Support</h3>
+            <p>We focus on more than symptoms — supporting mental wellness, daily living, life skills, housing
+              resources, transportation, education, and family wellbeing to help individuals thrive.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Our team</span>
+          <h2>The people behind <span class="accent">your care.</span></h2>
+          <p>Our dedicated leadership team brings together decades of healthcare experience, operations management, and
+            technology expertise to support our clients and providers.</p>
+        </div>
+        <div class="team-grid">
+          <article class="member">
+            <image-slot id="team-1" src="images/team_kelechi.webp" shape="rounded" radius="16"
+              placeholder="Drop a team photo"></image-slot>
+            <div>
+              <h3>Kelechi Peace Aguguo</h3>
+              <div class="role">CEO / RN</div>
+              <p>A RN with over 20 years of experience — very caring and well equipped, with nursing agency experience
+                and the ability to give care on all three levels.</p>
+            </div>
+          </article>
+          <article class="member">
+            <image-slot id="team-2" src="images/team_chidera.webp" shape="rounded" radius="16"
+              placeholder="Drop a team photo"></image-slot>
+            <div>
+              <h3>Prince Chidera Aguguo</h3>
+              <div class="role">Chief Secretary Officer</div>
+              <p>A graduate of information systems and cyber security from Morgan State, he organizes the office and
+                operations, and also has experience giving care.</p>
+            </div>
+          </article>
+          <article class="member">
+            <image-slot id="team-3" src="images/team_obiuto.webp" shape="rounded" radius="16"
+              placeholder="Drop a team photo"></image-slot>
+            <div>
+              <h3>Prince Obiuto Aguguo</h3>
+              <div class="role">Chief Technology Officer</div>
+              <p>A graduate of UMD CS and an AI engineer, he handles everything technology-related for the business.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="cta-band">
+      <div class="wrap">
+        <h2>Ready when you are.</h2>
+        <p>Call us to get started, or send a referral. A real person will help you take the next step.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-white btn-lg" href="index.html#contact">Request Services</a>
+          <a class="btn btn-teal btn-lg" href="Refer a Client.html">Refer a Client</a>
+          <a class="btn btn-ghost btn-lg" href="tel:+14437910678"
+            style="color:#fff;border-color:rgba(255,255,255,0.5)">Call 443-791-0678</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html" style="color:#fff">
+            <span class="logo-mark" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="20" fill="#2b6cb0" />
+                <path d="M20 30c-5.5-3.6-9-6.8-9-11.4A4.6 4.6 0 0 1 20 16a4.6 4.6 0 0 1 9 2.6C29 23.2 25.5 26.4 20 30Z"
+                  fill="#fff" />
+                <path d="M11.5 20.5h4l1.6-3.2 2.2 5 1.5-2.6h7.2" stroke="#2f9d92" stroke-width="1.7" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="logo-text"><span class="logo-name">Peaceful Behavioral Services</span><span
+                class="logo-tag">Maryland · Medicaid Accepted</span></span>
+          </a>
+          <p class="fdesc">Compassionate behavioral health and community support for individuals and families across
+            Maryland.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="Refer a Client.html">Refer a Client</a></li>
+            <li><a href="index.html#insurance">Insurance</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+14437910678">443-791-0678</a></li>
+            <li>5884 Belair Rd<br>Baltimore, MD 21206</li>
+            <li>Mon–Fri · 8am–6pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="yr"></span> Peaceful Behavioral Services. All rights reserved.</span>
+        <span class="footer-disclaimer">If you are experiencing a medical or mental health emergency, call 911 or
+          call/text 988 for the Suicide &amp; Crisis Lifeline.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating mobile call -->
+  <a class="fab-call" id="fab" href="tel:+14437910678" aria-label="Call 443-791-0678">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path
+        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72A2 2 0 0 1 22 16.92z" />
+    </svg>
+    Call 443-791-0678
+  </a>
+
+  <script src="image-slot.js"></script>
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const nav = document.getElementById('nav');
+    const fab = document.getElementById('fab');
+    const onScroll = () => {
+      const y = window.scrollY;
+      nav.classList.toggle('is-stuck', y > 6);
+      fab.classList.toggle('is-on', y > 300);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('closeBtn');
+    const openMenu = () => { mobileMenu.classList.add('is-open'); menuBtn.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; };
+    const closeMenu = () => { mobileMenu.classList.remove('is-open'); menuBtn.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; };
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) closeMenu(); });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  </script>
+</body>
+
+</html>

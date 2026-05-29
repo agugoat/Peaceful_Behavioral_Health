@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Refer a Client — Peaceful Behavioral Services</title>
+<meta name="description" content="Refer a client to Peaceful Behavioral Services. We work with providers, hospitals, social workers, case managers, schools, and families across Maryland." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ---- Refer page styles ---- */
+.ref-hero {
+  background:
+    radial-gradient(110% 90% at 90% -10%, var(--sky) 0%, rgba(233,241,251,0) 58%),
+    linear-gradient(180deg, #fbfdff 0%, var(--gray) 100%);
+  padding: 44px 0 36px;
+}
+@media (min-width: 760px) { .ref-hero { padding: 64px 0 44px; } }
+.ref-hero .crumb { font-size: 15px; color: var(--ink-soft); margin-bottom: 18px; }
+.ref-hero .crumb a { color: var(--blue-deep); text-decoration: none; font-weight: 600; }
+.ref-hero .crumb a:hover { text-decoration: underline; }
+.ref-hero h1 { margin-top: 14px; max-width: 16ch; }
+.ref-hero p.lede { margin-top: 18px; font-size: clamp(18px, 2vw, 21px); color: var(--ink-soft); max-width: 60ch; text-wrap: pretty; }
+.who { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.who span {
+  padding: 8px 15px; border-radius: var(--r-pill); background: #fff;
+  border: 1px solid var(--line); font-size: 14.5px; font-weight: 600; color: var(--navy);
+  box-shadow: var(--shadow-sm);
+}
+
+.ref-body { padding: 16px 0 80px; }
+@media (min-width: 760px) { .ref-body { padding: 30px 0 100px; } }
+.ref-layout { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
+@media (min-width: 960px) { .ref-layout { grid-template-columns: 1.5fr 0.9fr; gap: 44px; } }
+
+.ref-card {
+  background: #fff; border: 1px solid var(--line-soft); border-radius: var(--r-card);
+  padding: 30px 24px; box-shadow: var(--shadow-sm);
+}
+@media (min-width: 760px) { .ref-card { padding: 40px 38px; } }
+.fset { border: 0; margin: 0 0 30px; padding: 0; }
+.fset:last-of-type { margin-bottom: 18px; }
+.fset legend {
+  font-family: var(--f-head); font-weight: 600; color: var(--navy); font-size: 21px;
+  padding: 0; margin-bottom: 6px; display: flex; align-items: center; gap: 11px;
+}
+.fset .legend-num {
+  width: 30px; height: 30px; border-radius: 9px; background: var(--blue); color: #fff;
+  font-size: 15px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.fset .fset-hint { color: var(--ink-soft); font-size: 15px; margin: 0 0 20px 41px; }
+.fields-stack { display: flex; flex-direction: column; gap: 16px; }
+
+/* Checkbox grid */
+.check-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 560px) { .check-grid { grid-template-columns: 1fr 1fr; } }
+.check-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 15px; border: 1.5px solid var(--line); border-radius: 12px;
+  background: var(--sky-2); cursor: pointer; transition: border-color 150ms ease, background 150ms ease;
+  font-size: 16px; font-weight: 600; color: var(--navy); min-height: 50px;
+}
+.check-item:hover { border-color: var(--blue); }
+.check-item input { position: absolute; opacity: 0; width: 0; height: 0; }
+.check-box {
+  width: 24px; height: 24px; border-radius: 7px; border: 2px solid var(--line);
+  background: #fff; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+  color: #fff; transition: background 150ms ease, border-color 150ms ease;
+}
+.check-box svg { opacity: 0; transition: opacity 120ms ease; }
+.check-item input:checked ~ .check-box { background: var(--teal); border-color: var(--teal); }
+.check-item input:checked ~ .check-box svg { opacity: 1; }
+.check-item:has(input:checked) { border-color: var(--teal); background: #e6f5f3; }
+.check-item input:focus-visible ~ .check-box { outline: 3px solid var(--blue-bright); outline-offset: 2px; }
+
+.ref-submit { margin-top: 6px; }
+.ref-foot-note { font-size: 14px; color: var(--ink-soft); margin: 16px 0 0; display: flex; gap: 9px; align-items: flex-start; }
+.ref-foot-note svg { color: var(--teal); flex-shrink: 0; margin-top: 2px; }
+
+/* Sidebar */
+.ref-side { display: flex; flex-direction: column; gap: 18px; position: sticky; top: 96px; }
+@media (max-width: 959px) { .ref-side { position: static; } }
+.side-card { background: var(--navy); color: #e7f0f9; border-radius: var(--r-card); padding: 28px 26px; }
+.side-card h3 { color: #fff; font-size: 20px; margin-bottom: 6px; }
+.side-card p { color: #aecce6; font-size: 15.5px; margin: 0 0 18px; }
+.side-card .phone-line { font-family: var(--f-head); font-weight: 700; font-size: 26px; color: #fff; text-decoration: none; display: inline-block; }
+.side-card .phone-line:hover { color: #8fe0d6; }
+.side-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.side-steps li { display: grid; grid-template-columns: 32px 1fr; gap: 13px; align-items: start; }
+.side-steps .sn { width: 32px; height: 32px; border-radius: 9px; background: rgba(255,255,255,0.14); color: #8fe0d6; font-family: var(--f-head); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.side-steps .st { font-size: 15.5px; color: #dcecf8; line-height: 1.45; }
+.side-light { background: #fff; border: 1px solid var(--line-soft); border-radius: var(--r-card); padding: 24px; box-shadow: var(--shadow-sm); }
+.side-light h3 { font-size: 18px; margin-bottom: 12px; }
+.side-light .side-steps .sn { background: var(--sky); color: var(--blue-deep); }
+.side-light .side-steps .st { color: var(--ink-soft); }
+.side-light .info-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--line-soft); font-size: 15.5px; }
+.side-light .info-row:last-child { border-bottom: 0; }
+.side-light .info-row svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+.side-light .info-row a { color: var(--blue-deep); font-weight: 600; text-decoration: none; }
+
+/* Success */
+.ref-success { display: none; text-align: center; padding: 24px 6px; }
+.ref-success.is-on { display: block; }
+.ref-success h2 { margin-bottom: 10px; }
+.ref-success p { color: var(--ink-soft); font-size: 17px; max-width: 46ch; margin: 0 auto 24px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- Crisis bar -->
+<div class="crisis" role="region" aria-label="Crisis support">
+  <div class="crisis-inner">
+    <span class="crisis-dot" aria-hidden="true"></span>
+    <span>In crisis? Call or text <a href="tel:988">988</a> for the Suicide &amp; Crisis Lifeline — 24/7</span>
+  </div>
+</div>
+
+<!-- Nav -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="index.html" aria-label="Peaceful Behavioral Services — home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="20" r="20" fill="#2b6cb0"/>
+          <path d="M20 30c-5.5-3.6-9-6.8-9-11.4A4.6 4.6 0 0 1 20 16a4.6 4.6 0 0 1 9 2.6C29 23.2 25.5 26.4 20 30Z" fill="#fff"/>
+          <path d="M11.5 20.5h4l1.6-3.2 2.2 5 1.5-2.6h7.2" stroke="#2f9d92" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="logo-text">
+        <span class="logo-name">Peaceful Behavioral Services</span>
+        <span class="logo-tag">Maryland · Medicaid Accepted</span>
+      </span>
+    </a>
+
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="Refer a Client.html" class="active">Refer a Client</a></li>
+        <li><a href="index.html#insurance">Insurance</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm" href="tel:+14437910678" aria-label="Call now at 443-791-0678">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72A2 2 0 0 1 22 16.92z"/></svg>
+        Call Now
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-panel">
+    <div class="mm-head">
+      <span class="logo-name" style="color:var(--navy)">Menu</span>
+      <button class="close-btn" id="closeBtn" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="Refer a Client.html">Refer a Client</a>
+    <a href="index.html#insurance">Insurance</a>
+    <a href="About Us.html">About Us</a>
+    <a href="index.html#contact">Contact</a>
+    <a class="btn btn-primary mm-cta" href="tel:+14437910678">Call 443-791-0678</a>
+  </div>
+</div>
+
+<main id="main">
+<!-- Hero -->
+<section class="ref-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Refer a Client</div>
+    <span class="loc-badge"><span class="dot" aria-hidden="true"></span>For providers &amp; community partners</span>
+    <h1>Need to refer <span class="accent">a client?</span></h1>
+    <p class="lede">We work closely with providers, hospitals, social workers, case managers, and community organizations to connect individuals with behavioral health and supportive services.</p>
+    <div class="who" aria-label="Who we work with">
+      <span>Providers</span>
+      <span>Social workers</span>
+      <span>Hospitals</span>
+      <span>Therapists</span>
+      <span>Case managers</span>
+      <span>Schools</span>
+      <span>Families</span>
+    </div>
+  </div>
+</section>
+
+<!-- Body -->
+<section class="ref-body">
+  <div class="wrap ref-layout">
+    <!-- Form -->
+    <div class="ref-card">
+      <div data-view="form">
+        <form id="referForm" novalidate>
+          <!-- Spam protection -->
+          <input type="text" name="_honey" style="display:none">
+          <!-- Referral source -->
+          <fieldset class="fset">
+            <legend><span class="legend-num">1</span> Referral source</legend>
+            <p class="fset-hint">Tell us a little about you or your organization.</p>
+            <div class="fields-stack">
+              <div class="field" data-field="contactName">
+                <label for="r-contact">Contact name <span class="req">*</span></label>
+                <input id="r-contact" name="contactName" type="text" autocomplete="name" required>
+                <div class="field-error" id="r-err-contactName"></div>
+              </div>
+              <div class="form-row two">
+                <div class="field" data-field="sourcePhone">
+                  <label for="r-sphone">Phone number <span class="req">*</span></label>
+                  <input id="r-sphone" name="sourcePhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(443) 791-0678" required>
+                  <div class="field-error" id="r-err-sourcePhone"></div>
+                </div>
+                <div class="field" data-field="email">
+                  <label for="r-email">Email <span class="req">*</span></label>
+                  <input id="r-email" name="email" type="email" autocomplete="email" placeholder="you@organization.org" required>
+                  <div class="field-error" id="r-err-email"></div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Client info -->
+          <fieldset class="fset">
+            <legend><span class="legend-num">2</span> Client information</legend>
+            <p class="fset-hint">Basic details so our care coordination team can reach out.</p>
+            <div class="fields-stack">
+              <div class="field" data-field="clientName">
+                <label for="r-cname">Client name <span class="req">*</span></label>
+                <input id="r-cname" name="clientName" type="text" required>
+                <div class="field-error" id="r-err-clientName"></div>
+              </div>
+              <div class="field" data-field="clientPhone">
+                <label for="r-cphone">Client phone number</label>
+                <input id="r-cphone" name="clientPhone" type="tel" inputmode="tel" placeholder="(443) 555-0000">
+                <div class="field-error" id="r-err-clientPhone"></div>
+              </div>
+              <div class="field" data-field="reason">
+                <label for="r-reason">Reason for referral <span class="req">*</span></label>
+                <textarea id="r-reason" name="reason" placeholder="A short summary of what the client needs support with." required></textarea>
+                <div class="field-error" id="r-err-reason"></div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Services requested -->
+          <fieldset class="fset" id="servicesFieldset">
+            <legend><span class="legend-num">3</span> Services requested</legend>
+            <p class="fset-hint">Check all that apply — we'll help match the rest.</p>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="services" value="Mental Health Evaluation"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Mental Health Evaluation</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Medication Management"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Medication Management</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Counseling Services"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Counseling Services</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Group Therapy"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Group Therapy</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Life Skills Training"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Life Skills Training</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Housing Assistance"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Housing Assistance</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Transportation Assistance"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Transportation Assistance</label>
+              <label class="check-item"><input type="checkbox" name="services" value="GED Classes"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>GED Classes</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Job Placement"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Job Placement</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Parenting Classes"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Parenting Classes</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Anger Management"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Anger Management</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Mentoring Program for Minors"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Mentoring Program for Minors</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Free Monthly Bus Passes"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Free Monthly Bus Passes</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Free Credit Repair"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Free Credit Repair</label>
+              <label class="check-item"><input type="checkbox" name="services" value="Other"><span class="check-box" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Other</label>
+            </div>
+          </fieldset>
+
+          <button class="btn btn-primary btn-lg ref-submit" type="submit" style="width:100%">Submit Referral</button>
+          <p class="ref-foot-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 7 12 12 15 14"/></svg>
+            Our care coordination team will follow up within 1–2 business days. For urgent needs, please call 443-791-0678.
+          </p>
+        </form>
+      </div>
+
+      <div class="ref-success" data-view="success" aria-live="polite">
+        <span class="succ-mark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <h2>Referral received.</h2>
+        <p id="r-succ-detail">Thank you. Our care coordination team will follow up within 1–2 business days.</p>
+        <div class="hero-ctas" style="justify-content:center">
+          <a class="btn btn-outline" href="index.html">Back to home</a>
+          <a class="btn btn-primary" href="tel:+14437910678">Call 443-791-0678</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="ref-side">
+      <div class="side-card">
+        <h3>Prefer to refer by phone?</h3>
+        <p>Our care coordination team is glad to take a referral over the call.</p>
+        <a class="phone-line" href="tel:+14437910678">443-791-0678</a>
+      </div>
+      <div class="side-light">
+        <h3>What happens next</h3>
+        <ul class="side-steps">
+          <li><span class="sn">1</span><span class="st">You submit the referral — it takes about two minutes.</span></li>
+          <li><span class="sn">2</span><span class="st">Our care coordination team reviews it and verifies coverage.</span></li>
+          <li><span class="sn">3</span><span class="st">We follow up within 1–2 business days to schedule the client.</span></li>
+        </ul>
+      </div>
+      <div class="side-light">
+        <h3>Contact</h3>
+        <div class="info-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72A2 2 0 0 1 22 16.92z"/></svg>
+          <span><a href="tel:+14437910678">443-791-0678</a></span>
+        </div>
+        <div class="info-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>5884 Belair Rd<br>Baltimore, MD 21206</span>
+        </div>
+        <div class="info-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+          <span>Mon–Fri, 8:00 am – 6:00 pm</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html" style="color:#fff">
+          <span class="logo-mark" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#2b6cb0"/><path d="M20 30c-5.5-3.6-9-6.8-9-11.4A4.6 4.6 0 0 1 20 16a4.6 4.6 0 0 1 9 2.6C29 23.2 25.5 26.4 20 30Z" fill="#fff"/><path d="M11.5 20.5h4l1.6-3.2 2.2 5 1.5-2.6h7.2" stroke="#2f9d92" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="logo-text"><span class="logo-name">Peaceful Behavioral Services</span><span class="logo-tag">Maryland · Medicaid Accepted</span></span>
+        </a>
+        <p class="fdesc">Compassionate behavioral health and community support for individuals and families across Maryland.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="Refer a Client.html">Refer a Client</a></li>
+          <li><a href="index.html#insurance">Insurance</a></li>
+          <li><a href="About Us.html">About Us</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+14437910678">443-791-0678</a></li>
+          <li>5884 Belair Rd<br>Baltimore, MD 21206</li>
+          <li>Mon–Fri · 8am–6pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="yr"></span> Peaceful Behavioral Services. All rights reserved.</span>
+      <span class="footer-disclaimer">If you are experiencing a medical or mental health emergency, call 911 or call/text 988 for the Suicide &amp; Crisis Lifeline.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating mobile call -->
+<a class="fab-call" id="fab" href="tel:+14437910678" aria-label="Call 443-791-0678">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72A2 2 0 0 1 22 16.92z"/></svg>
+  Call 443-791-0678
+</a>
+
+<script src="image-slot.js"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Sticky nav + FAB
+  const nav = document.getElementById('nav');
+  const fab = document.getElementById('fab');
+  const onScroll = () => {
+    const y = window.scrollY;
+    nav.classList.toggle('is-stuck', y > 6);
+    fab.classList.toggle('is-on', y > 300);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeBtn = document.getElementById('closeBtn');
+  const openMenu = () => { mobileMenu.classList.add('is-open'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow = 'hidden'; };
+  const closeMenu = () => { mobileMenu.classList.remove('is-open'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; };
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) closeMenu(); });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+  // Phone formatting helper
+  function attachPhone(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', () => {
+      let v = el.value.replace(/\D/g, '').slice(0, 10);
+      let out = v;
+      if (v.length > 6) out = `(${v.slice(0,3)}) ${v.slice(3,6)}-${v.slice(6)}`;
+      else if (v.length > 3) out = `(${v.slice(0,3)}) ${v.slice(3)}`;
+      else if (v.length > 0) out = `(${v}`;
+      el.value = out;
+    });
+  }
+  attachPhone('r-sphone'); attachPhone('r-cphone');
+
+
+
+  // Validation
+  const form = document.getElementById('referForm');
+  function setErr(name, msg) {
+    const f = document.querySelector(`#referForm .field[data-field="${name}"]`);
+    if (!f) return; f.classList.add('has-error'); f.querySelector('.field-error').textContent = msg;
+  }
+  function clearErr(name) {
+    const f = document.querySelector(`#referForm .field[data-field="${name}"]`);
+    if (!f) return; f.classList.remove('has-error'); const e = f.querySelector('.field-error'); if (e) e.textContent = '';
+  }
+  ['contactName','sourcePhone','email','clientName','reason'].forEach(n => {
+    const f = document.querySelector(`#referForm .field[data-field="${n}"]`);
+    if (!f) return;
+    const input = f.querySelector('input, textarea, select');
+    input.addEventListener('input', () => clearErr(n));
+  });
+
+  function showSuccess(contactName, clientName) {
+    const contact = contactName.split(' ')[0];
+    document.getElementById('r-succ-detail').textContent =
+      `Thank you, ${contact}. We've received your referral for ${clientName}. Our care coordination team will follow up within 1–2 business days.`;
+    form.closest('[data-view="form"]').style.display = 'none';
+    document.querySelector('.ref-success').classList.add('is-on');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  const WEB3FORMS_ACCESS_KEY = "29cb9869-098f-42c1-8340-ae0e8bd8bedf"; // Paste your Web3Forms access key here!
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let ok = true;
+    const val = id => document.getElementById(id).value.trim();
+    if (val('r-contact').length < 2) { setErr('contactName', 'Please enter a contact name.'); ok = false; }
+    if (document.getElementById('r-sphone').value.replace(/\D/g,'').length < 10) { setErr('sourcePhone', 'Enter a 10-digit phone number.'); ok = false; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val('r-email'))) { setErr('email', 'Enter a valid email address.'); ok = false; }
+    if (val('r-cname').length < 2) { setErr('clientName', 'Please enter the client name.'); ok = false; }
+    if (val('r-reason').length < 3) { setErr('reason', 'Please add a brief reason for referral.'); ok = false; }
+
+    if (!ok) { const first = document.querySelector('#referForm .has-error input, #referForm .has-error textarea, #referForm .has-error select'); if (first) first.focus(); return; }
+
+    // Check honeypot
+    const honey = form.querySelector('input[name="_honey"]').value;
+    if (honey) {
+      showSuccess(val('r-contact'), val('r-cname'));
+      return;
+    }
+
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Submitting Referral...";
+
+    const servicesChecked = [];
+    document.querySelectorAll('#referForm input[name="services"]:checked').forEach(cb => {
+      servicesChecked.push(cb.value);
+    });
+    const servicesText = servicesChecked.length > 0 ? servicesChecked.join(', ') : "None selected";
+
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      "Contact Name": val('r-contact'),
+      "Contact Phone": document.getElementById('r-sphone').value,
+      "Contact Email": val('r-email'),
+      "Client Name": val('r-cname'),
+      "Client Phone": document.getElementById('r-cphone').value || "Not provided",
+      "Reason for Referral": val('r-reason'),
+      "Services Requested": servicesText,
+      _subject: "New Client Referral — Peaceful Behavioral Services Website",
+      _replyto: val('r-email')
+    };
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(async (response) => {
+      const data = await response.json();
+      if (response.ok && data.success) {
+        showSuccess(val('r-contact'), val('r-cname'));
+      } else {
+        throw new Error(data.message || "Server error");
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      alert("We encountered an issue submitting your referral. Please try again or call us directly at 443-791-0678.");
+      btn.disabled = false;
+      btn.textContent = originalText;
+    });
+  });
+</script>
+</body>
+</html>
