@@ -8,18 +8,18 @@
 */
 
 :root {
-  /* New Royal Blue & Dark Navy */
-  --navy:        #0c1e36;   /* Dark navy, for headings */
-  --navy-deep:   #081424;   /* Deeper dark navy, for footer / crisis header */
-  --blue:        #3164f4;   /* Primary Royal Blue action */
-  --blue-deep:   #1c44c5;   /* Deep Royal Blue for hover states */
-  --blue-bright: #5584ff;   /* Bright Royal Blue for active outlines */
+  /* Cobalt Blue & Deep Navy from Logo */
+  --navy:        #091630;   /* Deepest navy, for headings */
+  --navy-deep:   #050e1f;   /* Deeper dark navy, for footer / crisis header */
+  --blue:        #0046ad;   /* Cobalt Blue matching logo primary */
+  --blue-deep:   #00317a;   /* Deep Cobalt Blue for hover states */
+  --blue-bright: #296beb;   /* Bright Cobalt Blue for active outlines */
   
-  /* New Gold accents */
-  --gold:        #caa03c;   /* Accent gold with high contrast */
-  --gold-deep:   #a17c1e;   /* Hover gold */
-  --gold-soft:   #fcf7e6;   /* Light cream gold tint bg */
-  --gold-bright: #fbbf24;   /* Bright gold for dark bg elements */
+  /* Gold accents from Logo */
+  --gold:        #e2a510;   /* Gold matching logo accent */
+  --gold-deep:   #b58105;   /* Hover gold */
+  --gold-soft:   #fdf8e7;   /* Light cream gold tint bg */
+  --gold-bright: #f2b311;   /* Bright gold for dark bg elements */
   
   /* Backwards compatibility for --teal and --teal-deep */
   --teal:        var(--gold);
@@ -70,7 +70,7 @@ img, svg { display: block; max-width: 100%; }
 a { color: var(--blue-deep); }
 button { font: inherit; cursor: pointer; }
 
-::selection { background: rgba(49, 100, 244, 0.18); }
+::selection { background: rgba(0, 70, 173, 0.18); }
 
 /* Visible focus for keyboard users */
 a:focus-visible, button:focus-visible, input:focus-visible,
@@ -144,14 +144,14 @@ section { position: relative; }
 .crisis-dot {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--gold-bright); display: inline-block; flex-shrink: 0;
-  box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6);
+  box-shadow: 0 0 0 0 rgba(242, 179, 17, 0.6);
   animation: pulse 2.4s ease-out infinite;
 }
 @media (prefers-reduced-motion: reduce) { .crisis-dot { animation: none; } }
 @keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.55); }
-  70%  { box-shadow: 0 0 0 9px rgba(251, 191, 36, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+  0%   { box-shadow: 0 0 0 0 rgba(242, 179, 17, 0.55); }
+  70%  { box-shadow: 0 0 0 9px rgba(242, 179, 17, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(242, 179, 17, 0); }
 }
 .crisis a { color: var(--gold-bright); text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
 
@@ -230,9 +230,9 @@ section { position: relative; }
 }
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--blue); color: #fff; }
-.btn-primary:hover { background: var(--blue-deep); box-shadow: 0 10px 26px -12px rgba(49, 100, 244, 0.4); }
+.btn-primary:hover { background: var(--blue-deep); box-shadow: 0 10px 26px -12px rgba(0, 70, 173, 0.4); }
 .btn-teal { background: var(--teal); color: #fff; }
-.btn-teal:hover { background: var(--teal-deep); box-shadow: 0 10px 26px -12px rgba(202, 160, 60, 0.4); }
+.btn-teal:hover { background: var(--teal-deep); box-shadow: 0 10px 26px -12px rgba(226, 165, 16, 0.4); }
 .btn-outline { background: #fff; color: var(--navy); border-color: var(--line); }
 .btn-outline:hover { border-color: var(--blue); color: var(--blue-deep); background: var(--sky-2); }
 .btn-ghost { background: transparent; color: var(--navy); border-color: var(--navy); }
@@ -308,11 +308,11 @@ section { position: relative; }
 }
 .field textarea { min-height: 110px; resize: vertical; line-height: 1.5; }
 .field select {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23143a5e' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23091630' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   background-repeat: no-repeat; background-position: right 15px center; padding-right: 40px;
 }
 .field input:focus, .field select:focus, .field textarea:focus {
-  outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(49, 100, 244, 0.16);
+  outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(0, 70, 173, 0.16);
 }
 .field.has-error input, .field.has-error select, .field.has-error textarea { border-color: #c0392b; }
 .field-error { color: #c0392b; font-size: 14px; font-weight: 600; }
